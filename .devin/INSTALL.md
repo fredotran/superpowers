@@ -16,7 +16,7 @@ cd superpowers
 ./scripts/install-devin.sh --global
 ```
 
-Done. Now run `devin` anywhere and use `/skills` to verify.
+Done. Now run `devin` anywhere and invoke a skill by name, e.g. `/using-superpowers`.
 
 ### Option 2: Per-Project Install
 
@@ -46,13 +46,13 @@ The `.devin/skills/` directory already contains symlinks to all skills.
 devin
 ```
 
-Then type:
+Then invoke a skill by name, for example:
 
 ```
-/skills
+/using-superpowers
 ```
 
-You should see all Superpowers skills listed (brainstorming, test-driven-development, etc.).
+You can also try `/brainstorming`, `/test-driven-development`, `/systematic-debugging`, or any other skill directly.
 
 ## Uninstall
 
@@ -113,7 +113,7 @@ The symlinks automatically point to the updated content. No re-install needed.
    ```bash
    ls -la ~/.config/devin/skills/
    ```
-3. Use the `/skills` slash command to list discovered skills
+3. Try invoking a skill directly, e.g. `/using-superpowers`
 
 ### install-devin.sh fails with "Skills source not found"
 

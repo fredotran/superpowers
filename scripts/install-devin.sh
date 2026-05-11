@@ -138,7 +138,7 @@ ok "$installed skills installed, $skipped skipped"
 if [[ "$MODE" == "global" ]]; then
   echo ""
   echo "Done. Skills are now available in every Devin CLI session."
-  echo "Run 'devin' from any project and use '/skills' to verify."
+  echo "Run 'devin' from any project and try a skill, e.g. '/using-superpowers'."
 else
   echo ""
   echo "Done. Skills will be discovered when you run 'devin' from $TARGET_PROJECT."

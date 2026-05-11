@@ -107,7 +107,7 @@ cd superpowers
 devin
 ```
 
-Then verify with `/skills`. For per-project install, uninstall, or troubleshooting, see `.devin/INSTALL.md`.
+Then try a skill directly, e.g. `/using-superpowers`. For per-project install, uninstall, or troubleshooting, see `.devin/INSTALL.md`.
 
 ### Factory Droid
 
