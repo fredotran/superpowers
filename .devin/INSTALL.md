@@ -46,13 +46,21 @@ The `.devin/skills/` directory already contains symlinks to all skills.
 devin
 ```
 
-Then invoke a skill by name, for example:
+Skills auto-trigger thanks to `AGENTS.md` at the repo root. Try the acceptance test:
+
+```
+Let's make a react todo list
+```
+
+The `brainstorming` skill should activate automatically before any code is written.
+
+You can also invoke skills manually by name:
 
 ```
 /using-superpowers
+/brainstorming
+/systematic-debugging
 ```
-
-You can also try `/brainstorming`, `/test-driven-development`, `/systematic-debugging`, or any other skill directly.
 
 ## Uninstall
 

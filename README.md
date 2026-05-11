@@ -90,7 +90,7 @@ Superpowers is available via the [official Codex plugin marketplace](https://git
 
 ### Devin CLI
 
-This fork includes an install script and built-in `.devin/skills/` symlinks.
+This fork includes auto-triggering support via `AGENTS.md`, an install script, and built-in `.devin/skills/` symlinks.
 
 **Global install (recommended)** — skills available in every project:
 
@@ -107,7 +107,7 @@ cd superpowers
 devin
 ```
 
-Then try a skill directly, e.g. `/using-superpowers`. For per-project install, uninstall, or troubleshooting, see `.devin/INSTALL.md`.
+Skills auto-trigger when relevant. Try: `Let's make a react todo list` — `brainstorming` should activate automatically. For per-project install, uninstall, or troubleshooting, see `.devin/INSTALL.md`.
 
 ### Factory Droid
 
