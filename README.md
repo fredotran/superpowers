@@ -1,6 +1,6 @@
 # Superpowers
 
-> **Fork with `devin-cli` support.** This fork adds built-in [Devin CLI](https://cli.devin.ai) (`devin-cli`) support via `.devin/skills/` symlinks and an `install-devin.sh` script. See the [Devin CLI section](#devin-cli) below. Upstream: [obra/superpowers](https://github.com/obra/superpowers).
+> **Fork with `devin-cli` support.** This fork adds built-in [Devin CLI](https://cli.devin.ai) (`devin-cli`) support via `.devin/skills/` symlinks and an `install-devin.sh` script. All changes are on the `fredotran/dev` branch — `main` tracks upstream. See the [Devin CLI section](#devin-cli) below. Upstream: [obra/superpowers](https://github.com/obra/superpowers).
 
 Superpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.
 
@@ -95,14 +95,15 @@ This fork includes auto-triggering support via `AGENTS.md`, an install script, a
 **Global install (recommended)** — skills available in every project:
 
 ```bash
-git clone <your-fork-url> superpowers
+git clone --branch fredotran/dev <your-fork-url> superpowers
 cd superpowers
 ./scripts/install-devin.sh --global
 ```
 
-**Use without installing** — works only inside this repo:
+**Use without installing** — works only inside this repo (must be on `fredotran/dev` branch):
 
 ```bash
+git clone --branch fredotran/dev <your-fork-url> superpowers
 cd superpowers
 devin
 ```

@@ -11,7 +11,7 @@ Install Superpowers skills into your global Devin CLI config so they're
 available in **every** project:
 
 ```bash
-git clone <your-fork-url> superpowers
+git clone --branch fredotran/dev <your-fork-url> superpowers
 cd superpowers
 ./scripts/install-devin.sh --global
 ```
@@ -23,6 +23,7 @@ Done. Now run `devin` anywhere and invoke a skill by name, e.g. `/using-superpow
 Install into a specific project:
 
 ```bash
+git clone --branch fredotran/dev <your-fork-url> superpowers
 cd /path/to/your-project
 /path/to/superpowers/scripts/install-devin.sh --project .
 ```
@@ -31,9 +32,10 @@ Skills will be discovered when you run `devin` from that project.
 
 ### Option 3: Use the Built-In Symlinks (No Install)
 
-If you always work from this repo, you don't need to install anything:
+If you always work from this repo, you don't need to install anything. Make sure you are on the `fredotran/dev` branch:
 
 ```bash
+git clone --branch fredotran/dev <your-fork-url> superpowers
 cd superpowers
 devin
 ```
