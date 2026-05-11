@@ -1,10 +1,12 @@
 # Superpowers
 
+> **Fork with `devin-cli` support.** This fork adds built-in [Devin CLI](https://cli.devin.ai) (`devin-cli`) support via `.devin/skills/` symlinks and an `install-devin.sh` script. See the [Devin CLI section](#devin-cli) below. Upstream: [obra/superpowers](https://github.com/obra/superpowers).
+
 Superpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.
 
 ## Quickstart
 
-Give your agent Superpowers: [Claude Code](#claude-code), [Codex CLI](#codex-cli), [Codex App](#codex-app), [Factory Droid](#factory-droid), [Gemini CLI](#gemini-cli), [OpenCode](#opencode), [Cursor](#cursor), [GitHub Copilot CLI](#github-copilot-cli).
+Give your agent Superpowers: [Claude Code](#claude-code), [Codex CLI](#codex-cli), [Codex App](#codex-app), [Devin CLI](#devin-cli), [Factory Droid](#factory-droid), [Gemini CLI](#gemini-cli), [OpenCode](#opencode), [Cursor](#cursor), [GitHub Copilot CLI](#github-copilot-cli).
 
 ## How it works
 
@@ -85,6 +87,27 @@ Superpowers is available via the [official Codex plugin marketplace](https://git
 - In the Codex app, click on Plugins in the sidebar.
 - You should see `Superpowers` in the Coding section.
 - Click the `+` next to Superpowers and follow the prompts.
+
+### Devin CLI
+
+This fork includes an install script and built-in `.devin/skills/` symlinks.
+
+**Global install (recommended)** — skills available in every project:
+
+```bash
+git clone <your-fork-url> superpowers
+cd superpowers
+./scripts/install-devin.sh --global
+```
+
+**Use without installing** — works only inside this repo:
+
+```bash
+cd superpowers
+devin
+```
+
+Then verify with `/skills`. For per-project install, uninstall, or troubleshooting, see `.devin/INSTALL.md`.
 
 ### Factory Droid
 

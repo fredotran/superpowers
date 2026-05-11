@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(**)",
+      "Exec(git)",
+      "Exec(npm run)",
+      "Exec(npx)",
+      "Exec(node)",
+      "Exec(bash)",
+      "Exec(sh)",
+      "Exec(uv)",
+      "Exec(python3)",
+      "Exec(cargo)",
+      "Exec(rustc)",
+      "Exec(make)",
+      "Exec(cmake)"
+    ],
+    "deny": [
+      "Exec(sudo)",
+      "Exec(su)",
+      "Exec(rm -rf /)",
+      "Exec(curl *|*sh)",
+      "Exec(wget *|*sh)"
+    ],
+    "ask": [
+      "Write(**/.env*)",
+      "Write(**/secrets*)",
+      "Write(**/credentials*)",
+      "Exec(curl)",
+      "Exec(wget)"
+    ]
+  },
+  "read_config_from": {
+    "cursor": true,
+    "windsurf": true,
+    "claude": true
+  }
+}
