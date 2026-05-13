@@ -75,12 +75,26 @@ Installation differs by harness. If you use more than one, install Superpowers s
 
 This fork adds first-class Devin CLI support via `AGENTS.md` bootstrap, an install script, and `.devin/skills/` symlinks.
 
-**Global install (recommended)** — skills available in every project:
+**One-liner install (no clone needed):**
+
+```bash
+curl -sL https://raw.githubusercontent.com/fredotran/superpowers/fredotran/dev/scripts/install-devin.sh | bash -s -- --global
+```
+
+**Clone + install (recommended for updates):**
 
 ```bash
 git clone https://github.com/fredotran/superpowers.git
 cd superpowers
 ./scripts/install-devin.sh --global
+```
+
+**Install without keeping the repo:**
+
+```bash
+git clone --depth 1 https://github.com/fredotran/superpowers.git /tmp/superpowers-install
+/tmp/superpowers-install/scripts/install-devin.sh --global
+rm -rf /tmp/superpowers-install
 ```
 
 **Use without installing** — works only inside this repo:
