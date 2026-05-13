@@ -1,38 +1,105 @@
 # Superpowers
 
-> **Fork with `devin-cli` support.** This fork adds built-in [Devin CLI](https://cli.devin.ai) (`devin-cli`) support via `.devin/skills/` symlinks and an `install-devin.sh` script. All changes are on the `fredotran/dev` branch — `main` tracks upstream. See the [Devin CLI section](#devin-cli) below. Upstream: [obra/superpowers](https://github.com/obra/superpowers).
+> **This is a fork with Devin CLI support.** Upstream: [obra/superpowers](https://github.com/obra/superpowers).
+>
+> `main` tracks upstream cleanly. All fork changes live on `fredotran/dev` (default branch).
 
 Superpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.
+
+---
+
+## What's Different in This Fork
+
+| | Upstream `obra/superpowers` | This Fork `fredotran/dev` |
+|---|---|---|
+| **Devin CLI** | Not supported | Full support: auto-triggering, install script, skill symlinks |
+| **Skill discovery** | Via plugin marketplaces | Via `.devin/skills/` symlinks + `AGENTS.md` bootstrap |
+| **Auto-trigger** | Plugin-injected bootstrap | `AGENTS.md` loaded at every session start |
+| **Install** | Marketplace/plugin per harness | `./scripts/install-devin.sh --global` for Devin CLI |
+| **Default branch** | `main` (has all features) | `fredotran/dev` (has fork features); `main` mirrors upstream |
+
+### Files Added/Changed in This Fork
+
+```
+AGENTS.md                        ← new: bootstrap rules for skill auto-triggering (was symlink to CLAUDE.md)
+.devin/
+  config.json                    ← new: pre-configured permissions for Devin CLI
+  INSTALL.md                     ← new: Devin CLI setup guide
+  skills/                        ← new: 14 symlinks to superpowers skills/
+    brainstorming -> ../../skills/brainstorming
+    test-driven-development -> ../../skills/test-driven-development
+    ... (all 14 skills)
+scripts/
+  install-devin.sh               ← new: one-command global/project installer
+skills/using-superpowers/SKILL.md  ← modified: added Devin CLI tool equivalents
+README.md                        ← modified: this file
+```
+
+---
 
 ## Quickstart
 
 Give your agent Superpowers: [Claude Code](#claude-code), [Codex CLI](#codex-cli), [Codex App](#codex-app), [Devin CLI](#devin-cli), [Factory Droid](#factory-droid), [Gemini CLI](#gemini-cli), [OpenCode](#opencode), [Cursor](#cursor), [GitHub Copilot CLI](#github-copilot-cli).
 
+---
+
 ## How it works
 
-It starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it *doesn't* just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. 
+It starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it *doesn't* just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do.
 
-Once it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest. 
+Once it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest.
 
-After you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing to follow. It emphasizes true red/green TDD, YAGNI (You Aren't Gonna Need It), and DRY. 
+After you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing to follow. It emphasizes true red/green TDD, YAGNI (You Aren't Gonna Need It), and DRY.
 
 Next up, once you say "go", it launches a *subagent-driven-development* process, having agents work through each engineering task, inspecting and reviewing their work, and continuing forward. It's not uncommon for Claude to be able to work autonomously for a couple hours at a time without deviating from the plan you put together.
 
 There's a bunch more to it, but that's the core of the system. And because the skills trigger automatically, you don't need to do anything special. Your coding agent just has Superpowers.
 
+---
 
 ## Sponsorship
 
 If Superpowers has helped you do stuff that makes money and you are so inclined, I'd greatly appreciate it if you'd consider [sponsoring my opensource work](https://github.com/sponsors/obra).
 
-Thanks! 
+Thanks!
 
 - Jesse
 
+---
 
 ## Installation
 
 Installation differs by harness. If you use more than one, install Superpowers separately for each one.
+
+### Devin CLI
+
+This fork adds first-class Devin CLI support via `AGENTS.md` bootstrap, an install script, and `.devin/skills/` symlinks.
+
+**Global install (recommended)** — skills available in every project:
+
+```bash
+git clone https://github.com/fredotran/superpowers.git
+cd superpowers
+./scripts/install-devin.sh --global
+```
+
+**Use without installing** — works only inside this repo:
+
+```bash
+git clone https://github.com/fredotran/superpowers.git
+cd superpowers
+devin
+```
+
+Skills auto-trigger when relevant. Try:
+
+```
+Let's make a react todo list
+```
+
+`brainstorming` should activate automatically before any code is written.
+
+For per-project install, uninstall, or troubleshooting, see `.devin/INSTALL.md`.
 
 ### Claude Code
 
@@ -87,28 +154,6 @@ Superpowers is available via the [official Codex plugin marketplace](https://git
 - In the Codex app, click on Plugins in the sidebar.
 - You should see `Superpowers` in the Coding section.
 - Click the `+` next to Superpowers and follow the prompts.
-
-### Devin CLI
-
-This fork includes auto-triggering support via `AGENTS.md`, an install script, and built-in `.devin/skills/` symlinks.
-
-**Global install (recommended)** — skills available in every project:
-
-```bash
-git clone --branch fredotran/dev <your-fork-url> superpowers
-cd superpowers
-./scripts/install-devin.sh --global
-```
-
-**Use without installing** — works only inside this repo (must be on `fredotran/dev` branch):
-
-```bash
-git clone --branch fredotran/dev <your-fork-url> superpowers
-cd superpowers
-devin
-```
-
-Skills auto-trigger when relevant. Try: `Let's make a react todo list` — `brainstorming` should activate automatically. For per-project install, uninstall, or troubleshooting, see `.devin/INSTALL.md`.
 
 ### Factory Droid
 
@@ -175,6 +220,8 @@ already use it in another harness.
   copilot plugin install superpowers@superpowers-marketplace
   ```
 
+---
+
 ## The Basic Workflow
 
 1. **brainstorming** - Activates before writing code. Refines rough ideas through questions, explores alternatives, presents design in sections for validation. Saves design document.
@@ -193,6 +240,8 @@ already use it in another harness.
 
 **The agent checks for relevant skills before any task.** Mandatory workflows, not suggestions.
 
+---
+
 ## What's Inside
 
 ### Skills Library
@@ -204,7 +253,7 @@ already use it in another harness.
 - **systematic-debugging** - 4-phase root cause process (includes root-cause-tracing, defense-in-depth, condition-based-waiting techniques)
 - **verification-before-completion** - Ensure it's actually fixed
 
-**Collaboration** 
+**Collaboration**
 - **brainstorming** - Socratic design refinement
 - **writing-plans** - Detailed implementation plans
 - **executing-plans** - Batch execution with checkpoints
@@ -219,6 +268,8 @@ already use it in another harness.
 - **writing-skills** - Create new skills following best practices (includes testing methodology)
 - **using-superpowers** - Introduction to the skills system
 
+---
+
 ## Philosophy
 
 - **Test-Driven Development** - Write tests first, always
@@ -227,6 +278,8 @@ already use it in another harness.
 - **Evidence over claims** - Verify before declaring success
 
 Read [the original release announcement](https://blog.fsck.com/2025/10/09/superpowers/).
+
+---
 
 ## Contributing
 
@@ -240,13 +293,19 @@ The general contribution process for Superpowers is below. Keep in mind that we 
 
 See `skills/writing-skills/SKILL.md` for the complete guide.
 
+---
+
 ## Updating
 
 Superpowers updates are somewhat coding-agent dependent, but are often automatic.
 
+---
+
 ## License
 
 MIT License - see LICENSE file for details
+
+---
 
 ## Community
 
